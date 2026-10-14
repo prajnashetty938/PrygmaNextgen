@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   FaCalendarDays,
   FaArrowRightArrowLeft,
@@ -99,7 +100,7 @@ export default function ManualTestingOverview({ course }) {
             <div>
               <strong>Priya Sharma</strong>
               <span>QA Engineer &amp; Trainer</span>
-              <a href="#instructor-profile">View Profile <span aria-hidden="true">→</span></a>
+              <Link to="/instructor-profile">View Profile <span aria-hidden="true">→</span></Link>
             </div>
           </div>
           <div className="manual-detail-updated col-12 col-sm-5">
@@ -126,8 +127,8 @@ export default function ManualTestingOverview({ course }) {
         </div>
         <p className="manual-detail-offer">Save 50% on the course</p>
         <div className="manual-detail-actions">
-          <a className="manual-detail-enroll" href="#/register"><FaCartShopping aria-hidden="true" /> Enroll Now</a>
-          <a className="manual-detail-add-cart" href="#/register"><FaCartShopping aria-hidden="true" /> Add to Cart</a>
+          <Link className="manual-detail-enroll" to="/register"><FaCartShopping aria-hidden="true" /> Enroll Now</Link>
+          <Link className="manual-detail-add-cart" to="/register"><FaCartShopping aria-hidden="true" /> Add to Cart</Link>
         </div>
       </aside>
       </div>

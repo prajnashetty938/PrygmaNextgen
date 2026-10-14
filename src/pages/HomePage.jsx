@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import CourseCategories from '../components/CourseCategories';
@@ -9,7 +10,18 @@ import StudentReview from '../components/StudentReview';
 import FAQSection from '../components/FaqSection';
 import Footer from '../components/Footer';
 
-export default function HomePage() {
+export default function HomePage({ scrollTo }) {
+    useEffect(() => {
+        if (!scrollTo) {
+            window.scrollTo(0, 0);
+            return;
+        }
+        const frame = window.requestAnimationFrame(() => {
+            document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        return () => window.cancelAnimationFrame(frame);
+    }, [scrollTo]);
+
     return (
         <div className="home-page">
             <Header />

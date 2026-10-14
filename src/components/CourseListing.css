@@ -25,6 +25,14 @@
   border: 1px solid #dedfe3;
   border-radius: 15px;
   background: #fdfdfd;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.course-listing-card:hover,
+.course-listing-card:focus-within {
+  transform: translateY(-4px);
+  border-color: #6540ff;
+  box-shadow: 0 0 0 2px rgb(101 64 255 / 16%), 0 10px 22px rgb(35 42 70 / 12%);
 }
 
 .course-listing-image {
@@ -214,4 +222,10 @@
   .course-listing-grid { grid-template-columns: 1fr; gap: 18px; }
   .course-listing-image { height: 190px; }
   .course-listing-body { padding: 19px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .course-listing-card { transition: none; }
+  .course-listing-card:hover,
+  .course-listing-card:focus-within { transform: none; }
 }

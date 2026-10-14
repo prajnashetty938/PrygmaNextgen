@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import LoginPage from './pages/LoginPage';
@@ -8,31 +8,26 @@ import CoursesPage from './pages/CoursesPage';
 import CourseDetailsPage from './pages/CourseDetailsPage';
 import CartPage from './pages/CartPage';
 
-function getCurrentRoute() {
-  return window.location.hash
-    .replace(/^#\/?/, '')
-    .split('?')[0]
-    .replace(/\/$/, '')
-    .toLowerCase();
+function HomeSection({ id }) {
+  return <HomePage scrollTo={id} />;
 }
 
-function App() {
-  const [currentPage, setCurrentPage] = useState(getCurrentRoute);
-
-  useEffect(() => {
-    const updatePage = () => setCurrentPage(getCurrentRoute());
-    window.addEventListener('hashchange', updatePage);
-    return () => window.removeEventListener('hashchange', updatePage);
-  }, []);
-
-  if (currentPage === 'login') return <LoginPage />;
-  if (currentPage === 'register') return <RegisterPage />;
-  if (currentPage === 'cart') return <CartPage />;
-  if (currentPage === 'forgot-password') return <ForgotPasswordPage />;
-  if (currentPage === 'reset-password') return <ResetPasswordPage />;
-  if (currentPage.startsWith('courses/')) return <CourseDetailsPage courseSlug={currentPage.slice('courses/'.length)} />;
-  if (currentPage === 'courses') return <CoursesPage />;
-  return <HomePage />;
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/categories" element={<HomeSection id="categories" />} />
+      <Route path="/about" element={<HomeSection id="about" />} />
+      <Route path="/contact" element={<HomeSection id="contact" />} />
+      <Route path="/instructor-profile" element={<HomeSection id="instructor-profile" />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="/reset-password" element={<ResetPasswordPage />} />
+      <Route path="/courses" element={<CoursesPage />} />
+      <Route path="/courses/:courseSlug" element={<CourseDetailsPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
 }
-
-export default App

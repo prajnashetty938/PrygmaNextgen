@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Logo from '../assets/Logo.png';
 import LoginImg from '../assets/LoginImg.png';
 import GoogleSignInButton from '../components/GoogleSignInButton';
 import './LoginPage.css';
@@ -6,6 +8,7 @@ import './LoginPage.css';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001';
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -30,7 +33,7 @@ export default function LoginPage() {
       }
 
       setError('');
-      window.location.hash = '#/';
+      navigate('/');
     } catch {
       setError('Could not reach the login service. Please try again later.');
     } finally {
@@ -49,10 +52,11 @@ export default function LoginPage() {
 
         {/* Right side */}
         <div className = "login-right">
+          <img src={Logo} alt="Prygma NextGen" className="login-logo" />
             <div className="heading"><h2>Sign In</h2>
-            <p><span className="text-secondary">Or</span> <a href="#/register">Create a new account</a></p>
+            <p><span className="text-secondary">Or</span> <Link to="/register">Create a new account</Link></p>
             </div>
-            <GoogleSignInButton mode="login" onSuccess={() => { window.location.hash = '#/'; }} />
+            <GoogleSignInButton mode="login" onSuccess={() => navigate('/')} />
             <div className="auth-divider" aria-hidden="true">or sign in with email</div>
 
             <form onSubmit = {handleSubmit}>
@@ -74,7 +78,7 @@ export default function LoginPage() {
                     <label>
                         <input type = "checkbox"/>Remember me
                      </label>
-                     <a href ="#/forgot-password">Forgot your password</a>
+                     <Link to="/forgot-password">Forgot your password</Link>
                 </div>    
                 <button type="submit" className ="sibmit-btn" disabled={isSubmitting}>
                   {isSubmitting ? 'Signing in…' : 'Sign In'}

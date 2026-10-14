@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import "./Footer.css";
 
@@ -12,9 +12,9 @@ export default function Footer() {
           <div className="col-6 col-md-4 col-lg-2">
             <h5 className="fw-bold mb-3">Platform</h5>
             <ul className="list-unstyled">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
               <li><a href="#">Blog</a></li>
             </ul>
           </div>
@@ -23,8 +23,8 @@ export default function Footer() {
           <div className="col-6 col-md-4 col-lg-2">
             <h5 className="fw-bold mb-3">Courses</h5>
             <ul className="list-unstyled">
-              <li><a href="#">All Courses</a></li>
-              <li><a href="#">Categories</a></li>
+              <li><Link to="/courses">All Courses</Link></li>
+              <li><Link to="/categories">Categories</Link></li>
               <li><a href="#">Popular</a></li>
               <li><a href="#">New</a></li>
             </ul>

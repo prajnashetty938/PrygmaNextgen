@@ -1,7 +1,11 @@
 import { FaCartShopping, FaClock } from 'react-icons/fa6';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ManualTestingOverview from '../components/ManualTestingOverview';
+import ApiTestingOverview from '../components/ApiTestingOverview';
+import SeleniumAutomationOverview from '../components/SeleniumAutomationOverview';
+import PlaywrightOverview from '../components/PlaywrightOverview';
 import courses from '../data/courses';
 import './CourseDetailsPage.css';
 
@@ -9,17 +13,21 @@ function CourseBreadcrumb({ course }) {
   return (
     <nav className="course-breadcrumb" aria-label="Breadcrumb">
       <ol>
-        <li><a href="#">Home</a></li>
-        <li><a href="#/courses">Courses</a></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/courses">Courses</Link></li>
         <li aria-current="page">{course.title}</li>
       </ol>
     </nav>
   );
 }
 
-export default function CourseDetailsPage({ courseSlug }) {
-  const course = courses.find((item) => item.slug === courseSlug);
+export default function CourseDetailsPage() {
+  const { courseSlug } = useParams();
+  const course = courses.find((item) => item.slug === courseSlug?.toLowerCase());
   const isManualTesting = course?.slug === 'manual-testing-fundamentals';
+  const isApiTesting = course?.slug === 'api-testing-with-postman';
+  const isSeleniumAutomation = course?.slug === 'selenium-automation-with-java';
+  const isPlaywright = course?.slug === 'playwright-with-typescript';
 
   if (isManualTesting) {
     return (
@@ -28,6 +36,45 @@ export default function CourseDetailsPage({ courseSlug }) {
         <main className="manual-course-page">
           <CourseBreadcrumb course={course} />
           <ManualTestingOverview course={course} />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (isApiTesting) {
+    return (
+      <div className="manual-course-layout">
+        <Header />
+        <main className="manual-course-page">
+          <CourseBreadcrumb course={course} />
+          <ApiTestingOverview course={course} />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (isSeleniumAutomation) {
+    return (
+      <div className="manual-course-layout">
+        <Header />
+        <main className="manual-course-page">
+          <CourseBreadcrumb course={course} />
+          <SeleniumAutomationOverview course={course} />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (isPlaywright) {
+    return (
+      <div className="manual-course-layout">
+        <Header />
+        <main className="manual-course-page">
+          <CourseBreadcrumb course={course} />
+          <PlaywrightOverview course={course} />
         </main>
         <Footer />
       </div>
@@ -64,7 +111,7 @@ export default function CourseDetailsPage({ courseSlug }) {
                     <span>{course.discount}</span>
                   </div>
                   <p>One-time payment · Certificate included</p>
-                  <a className="course-details-enroll" href="#/register"><FaCartShopping aria-hidden="true" /> Enroll Now</a>
+                  <Link className="course-details-enroll" to="/register"><FaCartShopping aria-hidden="true" /> Enroll Now</Link>
                 </div>
               </div>
             </article>
@@ -73,7 +120,7 @@ export default function CourseDetailsPage({ courseSlug }) {
             <div className="course-details-not-found">
               <h1>Course not found</h1>
               <p>That course may have moved. Browse the current courses to find what you need.</p>
-              <a href="#/courses">Browse courses</a>
+              <Link to="/courses">Browse courses</Link>
             </div>
           )}
         </div>

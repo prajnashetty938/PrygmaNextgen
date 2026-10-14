@@ -1,4 +1,5 @@
 import { FaArrowRight, FaCircleCheck } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 
 export default function Hero() {
@@ -13,17 +14,15 @@ export default function Hero() {
               Learn in-demand skills from people who use them every day. Clear lessons, practical projects, and a pace that works for you.
             </p>
             <div className="hero-actions">
-              <a className="hero-primary-action" href="#/courses">Explore courses <FaArrowRight aria-hidden="true" /></a>
-              <a className="hero-secondary-action" href="#categories">Browse categories</a>
+              <Link className="hero-primary-action" to="/courses">Explore courses <FaArrowRight aria-hidden="true" /></Link>
             </div>
             <div className="hero-proof" aria-label="Course benefits">
               <span><FaCircleCheck aria-hidden="true" /> Learn at your own pace</span>
-              <span><FaCircleCheck aria-hidden="true" /> Learn by doing</span>
             </div>
           </div>
         </div>
       </div>
-      <a className="hero-scroll-cue" href="#categories">A good place to start <span aria-hidden="true">&#8595;</span></a>
+      <Link className="hero-scroll-cue" to="/categories">A good place to start <span aria-hidden="true">&#8595;</span></Link>
     </section>
   );
 }

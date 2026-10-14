@@ -26,7 +26,7 @@ const courses = [
 ];
 
 export function getCoursePath(course) {
-  return `#/courses/${course.slug}`;
+  return `/courses/${course.slug}`;
 }
 
 export default courses;

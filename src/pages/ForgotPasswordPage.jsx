@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import LoginImg from '../assets/LoginImg.png';
 import './LoginPage.css';
 import './ForgotPasswordPage.css';
@@ -73,7 +74,7 @@ export default function ForgotPasswordPage() {
           </button>
         </form>
 
-        <p className="forgot-password-back"><a href="#/login">Back to Sign In</a></p>
+        <p className="forgot-password-back"><Link to="/login">Back to Sign In</Link></p>
       </section>
     </main>
   );

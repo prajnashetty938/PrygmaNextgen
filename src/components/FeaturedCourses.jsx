@@ -1,4 +1,5 @@
 import { FaCartShopping, FaClock, FaEye, FaStar, FaUsers } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 import './FeaturedCourses.css';
 
 const courses = [
@@ -38,7 +39,7 @@ export default function FeaturedCourses() {
             <h2 id="featured-courses-title"><span>Featured Courses</span></h2>
             <p>Build in-demand skills with our expert-led courses and take your career to the next level.</p>
           </div>
-          <a className="all-courses-link" href="#/courses">View All Courses <span aria-hidden="true">→</span></a>
+          <Link className="all-courses-link" to="/courses">View All Courses <span aria-hidden="true">→</span></Link>
         </header>
 
         <div className="row g-3 g-xl-4 featured-course-grid">
@@ -62,8 +63,8 @@ export default function FeaturedCourses() {
                   <del>{course.oldPrice}</del><strong>{course.price}</strong><span>{course.discount}</span>
                 </div>
                 <div className="featured-course-actions">
-                  <a href="#course-details" className="preview-course"><FaEye /> View Course</a>
-                  <a href="#enroll" className="enroll-course"><FaCartShopping /> Enroll Now</a>
+                  <Link to="/courses" className="preview-course"><FaEye /> View Course</Link>
+                  <Link to="/register" className="enroll-course"><FaCartShopping /> Enroll Now</Link>
                 </div>
               </div>
             </article>

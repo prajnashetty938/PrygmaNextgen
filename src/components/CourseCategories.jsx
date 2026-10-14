@@ -1,4 +1,5 @@
 import { FaArrowRight, FaBookOpen, FaBriefcase, FaBullhorn, FaChartColumn, FaCloud, FaCode, FaPenNib, FaUser, FaUserShield, FaGear, FaRobot } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 import './CourseCategories.css';
 
 const categories = [
@@ -34,7 +35,7 @@ export default function CourseCategories() {
                 <p>{description}</p>
                 <div className="category-card-footer">
                   <span className="category-course-count"><FaBookOpen aria-hidden="true" /> {count} Courses</span>
-                  <a className="category-arrow" href="#" aria-label={`Explore ${name} courses`}><FaArrowRight aria-hidden="true" /></a>
+                  <Link className="category-arrow" to="/courses" aria-label={`Explore ${name} courses`}><FaArrowRight aria-hidden="true" /></Link>
                 </div>
               </div>
             </article>

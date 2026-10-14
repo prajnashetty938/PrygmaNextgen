@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import SigninImg from '../assets/SigninImg.png';
 import GoogleSignInButton from '../components/GoogleSignInButton';
 import './LoginPage.css';
@@ -48,6 +49,7 @@ function validateField(name, values) {
 }
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -160,13 +162,13 @@ export default function RegisterPage() {
       <section className="login-right register-right" aria-labelledby="register-title">
         <div className="heading">
           <h1 id="register-title">Create your account</h1>
-          <p>Already have an account? <a href="#/login">Sign in</a></p>
+          <p>Already have an account? <Link to="/login">Sign in</Link></p>
         </div>
 
         <GoogleSignInButton
           mode="register"
           termsAccepted={values.terms}
-          onSuccess={() => { window.location.hash = '#/'; }}
+          onSuccess={() => navigate('/')}
         />
         <div className="auth-divider" aria-hidden="true">or create an account with email</div>
 

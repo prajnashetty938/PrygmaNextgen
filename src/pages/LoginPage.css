@@ -55,6 +55,14 @@ a {
   color: #25202f;
 }
 
+.login-logo {
+  display: block;
+  width: 120px;
+  height: auto;
+  align-self: center;
+  margin-bottom: 1rem;
+}
+
 .login-right h2 {
   margin: 0 0 1.5rem;
   font-size: 2rem;

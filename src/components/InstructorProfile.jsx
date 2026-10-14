@@ -1,4 +1,5 @@
 import { FaBookOpen, FaStar, FaUsers } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 import './InstructorProfile.css';
 
 const expertise = ['Manual Testing', 'Automation Testing', 'API Testing', 'MySQL'];
@@ -34,7 +35,7 @@ export default function InstructorProfile() {
           <span><FaBookOpen aria-hidden="true" /><strong>12</strong> Courses</span>
           <span><FaUsers aria-hidden="true" /><strong>8.4K</strong> Students</span>
           <span><FaStar aria-hidden="true" /><strong>4.8</strong> Rating</span>
-          <a href="#instructor-profile">View Profile <span aria-hidden="true">→</span></a>
+          <Link to="/instructor-profile">View Profile <span aria-hidden="true">→</span></Link>
         </div>
       </article>
     </section>

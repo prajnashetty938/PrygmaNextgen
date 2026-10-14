@@ -1,4 +1,5 @@
 import { FaCartShopping, FaClock, FaEye } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 import courses, { getCoursePath } from '../data/courses';
 import './CourseListing.css';
 
@@ -13,9 +14,9 @@ export default function CourseListing({ searchTerm = '' }) {
       <div className="course-listing-grid">
         {visibleCourses.map((course) => (
           <article className="course-listing-card" key={course.slug}>
-            <a
+            <Link
               className="course-listing-image"
-              href={getCoursePath(course)}
+              to={getCoursePath(course)}
               style={{ backgroundImage: `url(https://images.unsplash.com/${course.image}?auto=format&fit=crop&w=900&q=85)` }}
               aria-label={`View ${course.title} course details`}
             />
@@ -35,8 +36,8 @@ export default function CourseListing({ searchTerm = '' }) {
                 </div>
                 <p className="course-payment-note">One-time payment · Certificate included</p>
                 <div className="course-listing-actions">
-                  <a className="course-view-action" href={getCoursePath(course)}><FaEye aria-hidden="true" /> View Course Details</a>
-                  <a className="course-enroll-action" href="#/register"><FaCartShopping aria-hidden="true" /> Enroll Now</a>
+                  <Link className="course-view-action" to={getCoursePath(course)}><FaEye aria-hidden="true" /> View Course Details</Link>
+                  <Link className="course-enroll-action" to="/register"><FaCartShopping aria-hidden="true" /> Enroll Now</Link>
                 </div>
               </div>
             </div>

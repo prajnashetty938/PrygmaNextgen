@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { FaArrowRight, FaCartShopping } from 'react-icons/fa6';
 import './Header.css';
 import logo from '../assets/Logo.png';
@@ -6,22 +7,15 @@ import logo from '../assets/Logo.png';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
-  const currentRoute = window.location.hash
-    .replace(/^#\/?/, '')
-    .split('?')[0]
-    .replace(/\/$/, '')
-    .toLowerCase();
-  const homeIsCurrent = !currentRoute || currentRoute === 'home';
-  const coursesIsCurrent = currentRoute === 'courses' || currentRoute.startsWith('courses/');
-  const isCurrentRoute = (route) => currentRoute === route;
+  const navClass = ({ isActive }) => `nav-link${isActive ? ' is-current' : ''}`;
 
   return (
     <header className="site-header">
       <nav className="navbar navbar-expand-lg site-navbar" aria-label="Main navigation">
         <div className="container-xl">
-          <a className="navbar-brand site-brand" href="#" aria-label="Prygma home" onClick={closeMenu}>
+          <NavLink className="navbar-brand site-brand" to="/" aria-label="Prygma home" onClick={closeMenu}>
             <img src={logo} alt="Prygma" />
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler site-nav-toggle"
             type="button"
@@ -34,16 +28,16 @@ export default function Header() {
           </button>
           <div className={`collapse navbar-collapse${menuOpen ? ' show' : ''}`} id="site-navigation">
             <div className="navbar-nav site-nav-links ms-lg-auto">
-              <a className={`nav-link${homeIsCurrent ? ' is-current' : ''}`} href="#" aria-current={homeIsCurrent ? 'page' : undefined} onClick={closeMenu}>Home</a>
-              <a className={`nav-link${coursesIsCurrent ? ' is-current' : ''}`} href="#/courses" aria-current={coursesIsCurrent ? 'page' : undefined} onClick={closeMenu}>Courses</a>
-              <a className={`nav-link${isCurrentRoute('categories') ? ' is-current' : ''}`} href="#categories" aria-current={isCurrentRoute('categories') ? 'page' : undefined} onClick={closeMenu}>Categories</a>
-              <a className={`nav-link${isCurrentRoute('about') ? ' is-current' : ''}`} href="#about" aria-current={isCurrentRoute('about') ? 'page' : undefined} onClick={closeMenu}>About</a>
-              <a className={`nav-link${isCurrentRoute('contact') ? ' is-current' : ''}`} href="#contact" aria-current={isCurrentRoute('contact') ? 'page' : undefined} onClick={closeMenu}>Contact</a>
+              <NavLink className={navClass} to="/" end onClick={closeMenu}>Home</NavLink>
+              <NavLink className={navClass} to="/courses" onClick={closeMenu}>Courses</NavLink>
+              <NavLink className={navClass} to="/categories" onClick={closeMenu}>Categories</NavLink>
+              <NavLink className={navClass} to="/about" onClick={closeMenu}>About</NavLink>
+              <NavLink className={navClass} to="/contact" onClick={closeMenu}>Contact</NavLink>
             </div>
             <div className="site-nav-actions">
-              <a className={`site-cart${isCurrentRoute('cart') ? ' is-current' : ''}`} href="#/cart" aria-current={isCurrentRoute('cart') ? 'page' : undefined} onClick={closeMenu}><FaCartShopping aria-hidden="true" /> Shopping Cart</a>
-              <a className={`site-login${isCurrentRoute('login') ? ' is-current' : ''}`} href="#/login" aria-current={isCurrentRoute('login') ? 'page' : undefined} onClick={closeMenu}>Log in</a>
-              <a className={`site-signup${isCurrentRoute('register') ? ' is-current' : ''}`} href="#/register" aria-current={isCurrentRoute('register') ? 'page' : undefined} onClick={closeMenu}>Sign Up <FaArrowRight aria-hidden="true" /></a>
+              <NavLink className={({ isActive }) => `site-cart${isActive ? ' is-current' : ''}`} to="/cart" onClick={closeMenu}><FaCartShopping aria-hidden="true" /> Shopping Cart</NavLink>
+              <NavLink className={({ isActive }) => `site-login${isActive ? ' is-current' : ''}`} to="/login" onClick={closeMenu}>Log in</NavLink>
+              <NavLink className={({ isActive }) => `site-signup${isActive ? ' is-current' : ''}`} to="/register" onClick={closeMenu}>Sign Up <FaArrowRight aria-hidden="true" /></NavLink>
             </div>
           </div>
         </div>

@@ -1,12 +1,13 @@
 import { useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import LoginImg from '../assets/LoginImg.png';
 import './LoginPage.css';
 import './ForgotPasswordPage.css';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001';
-const token = new URLSearchParams(window.location.hash.split('?')[1] || '').get('token') || '';
-
 export default function ResetPasswordPage() {
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get('token') || '';
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -93,13 +94,13 @@ export default function ResetPasswordPage() {
           />
 
           {error && <p className="forgot-password-message" role="alert">{error}</p>}
-          {message && <p className="forgot-password-success" role="status">{message} <a href="#/login">Sign in</a></p>}
+          {message && <p className="forgot-password-success" role="status">{message} <Link to="/login">Sign in</Link></p>}
           <button type="submit" className="sibmit-btn" disabled={isSubmitting || Boolean(message)}>
             {isSubmitting ? 'Updating…' : 'Reset Password'}
           </button>
         </form>
 
-        <p className="forgot-password-back"><a href="#/login">Back to Sign In</a></p>
+        <p className="forgot-password-back"><Link to="/login">Back to Sign In</Link></p>
       </section>
     </main>
   );

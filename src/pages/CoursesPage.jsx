@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Header from '../components/Header';
 import CoursesBanner from '../components/CoursesBanner';
 import CourseListing from '../components/CourseListing';
@@ -6,7 +7,10 @@ import Footer from '../components/Footer';
 import './CoursesPage.css';
 
 export default function CoursesPage() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(() => {
+    return searchParams.get('q') || '';
+  });
 
   return (
     <div className="courses-page">
