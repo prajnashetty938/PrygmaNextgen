@@ -4,7 +4,6 @@ import { FaArrowRight, FaCartShopping } from 'react-icons/fa6';
 import './Header.css';
 import logo from '../assets/Logo.png';
 
-
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);

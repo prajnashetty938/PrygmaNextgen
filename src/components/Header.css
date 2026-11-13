@@ -19,6 +19,7 @@
 .site-nav-toggle { padding: 6px 9px; border-color: #dedbe9; }
 .site-nav-toggle:focus { box-shadow: 0 0 0 .2rem rgb(96 68 207 / 18%); }
 
+
 @media (max-width: 991.98px) {
   .site-navbar > .container-xl { flex-wrap: wrap; }
   .site-navbar .navbar-collapse { flex-basis: 100%; padding: 14px 0 6px; }
