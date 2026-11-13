@@ -1,8 +1,9 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaArrowRight, FaCartShopping } from 'react-icons/fa6';
 import './Header.css';
 import logo from '../assets/Logo.png';
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,6 +17,7 @@ export default function Header() {
           <NavLink className="navbar-brand site-brand" to="/" aria-label="Prygma home" onClick={closeMenu}>
             <img src={logo} alt="Prygma" />
           </NavLink>
+
           <button
             className="navbar-toggler site-nav-toggle"
             type="button"
@@ -45,3 +47,4 @@ export default function Header() {
     </header>
   );
 }
+
