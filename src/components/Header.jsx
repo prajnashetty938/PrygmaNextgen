@@ -27,6 +27,7 @@ export default function Header() {
           >
             <span className="navbar-toggler-icon" />
           </button>
+          
           <div className={`collapse navbar-collapse${menuOpen ? ' show' : ''}`} id="site-navigation">
             <div className="navbar-nav site-nav-links ms-lg-auto">
               <NavLink className={navClass} to="/" end onClick={closeMenu}>Home</NavLink>
