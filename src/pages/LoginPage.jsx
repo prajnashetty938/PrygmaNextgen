@@ -60,18 +60,24 @@ export default function LoginPage() {
             <div className="auth-divider" aria-hidden="true">or sign in with email</div>
 
             <form onSubmit = {handleSubmit}>
-                <input type ="email"
+                <div className="login-field">
+                  <label className="login-field-label" htmlFor="login-email">Email</label>
+                  <input id="login-email" type ="email"
                          placeholder = "Enter email"
                          value ={email}
                          onChange = {(e) => { setEmail(e.target.value); setError(''); }}
                          required
                          />
-                <input type ="password"
+                </div>
+                <div className="login-field">
+                  <label className="login-field-label" htmlFor="login-password">Password</label>
+                  <input id="login-password" type ="password"
                         placeholder = "Enter password"
                         value ={password}
                         onChange = {(e) => { setPassword(e.target.value); setError(''); }}
                         required
                         />
+                </div>
                         {error && <p className="error">{error}</p>}
                 
                 <div className = "options">

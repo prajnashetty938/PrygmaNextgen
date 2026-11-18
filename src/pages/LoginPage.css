@@ -75,7 +75,16 @@ a {
   margin-top: 1.5rem;
 }
 
-.login-right form > input {
+.login-field {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.login-field-label {
+  font-size: 0.95rem;
+}
+
+.login-field input {
   width: 100%;
   padding: 0.85rem 1rem;
   border: 1px solid #d8d3e0;
@@ -84,7 +93,7 @@ a {
   font: inherit;
 }
 
-.login-right form > input:focus {
+.login-field input:focus {
   outline: 2px solid #7541d8;
   outline-offset: 1px;
 }
