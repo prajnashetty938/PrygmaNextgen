@@ -16,6 +16,7 @@ export default function HomePage({ scrollTo }) {
             window.scrollTo(0, 0);
             return;
         }
+        
         const frame = window.requestAnimationFrame(() => {
             document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
